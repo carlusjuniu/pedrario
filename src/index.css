@@ -1,0 +1,155 @@
+:root {
+  /* Color Palette (Deep Ocean & Neon Orchid) */
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* HSL Tailored Colors - Light Mode default */
+  --hue: 258;
+  --accent: hsl(var(--hue), 85%, 60%);
+  --accent-hover: hsl(var(--hue), 85%, 52%);
+  --accent-rgb: 139, 92, 246;
+  
+  --bg: hsl(230, 20%, 98%);
+  --bg-card: hsl(0, 0%, 100%);
+  --bg-card-hover: hsl(var(--hue), 20%, 96%);
+  
+  --text: hsl(230, 15%, 35%);
+  --text-muted: hsl(230, 10%, 55%);
+  --text-heading: hsl(230, 25%, 12%);
+  
+  --border: hsl(230, 15%, 90%);
+  --border-hover: hsl(var(--hue), 40%, 80%);
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-glow: 0 0 30px rgba(139, 92, 246, 0.15);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent: hsl(var(--hue), 95%, 68%);
+    --accent-hover: hsl(var(--hue), 95%, 75%);
+    --accent-rgb: 167, 139, 250;
+    
+    --bg: hsl(225, 24%, 6%);
+    --bg-card: hsl(225, 20%, 10%);
+    --bg-card-hover: hsl(225, 20%, 13%);
+    
+    --text: hsl(225, 10%, 75%);
+    --text-muted: hsl(225, 8%, 52%);
+    --text-heading: hsl(225, 15%, 96%);
+    
+    --border: hsl(225, 15%, 15%);
+    --border-hover: hsl(var(--hue), 30%, 25%);
+    
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 40px rgba(167, 139, 250, 0.12);
+  }
+}
+
+/* Modern Resets & Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: var(--bg);
+  color: var(--text);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
+  width: 100%;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  color: var(--text-heading);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Custom Scrollbar for Premium Feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+  transition: background var(--transition-fast);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Dynamic Glow Spotlights */
+.glow-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 600px;
+  background: radial-gradient(circle at 50% -100px, rgba(var(--accent-rgb), 0.15) 0%, rgba(var(--accent-rgb), 0) 60%);
+  pointer-events: none;
+  z-index: 0;
+}
